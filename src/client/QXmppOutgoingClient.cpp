@@ -125,7 +125,10 @@ void QXmppOutgoingClientPrivate::connectToHost(const QString &host, quint16 port
 
 #if (QT_VERSION >= QT_VERSION_CHECK(4, 8, 0))
     // set the name the SSL certificate should match
-    q->socket()->setPeerVerifyName(config.domain());
+    if (!config.host().isEmpty() && config.port())
+      q->socket()->setPeerVerifyName(config.host());
+    else
+      q->socket()->setPeerVerifyName(config.domain());
 #endif
 
     // connect to host
