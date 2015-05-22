@@ -22,6 +22,7 @@ find_package(Qt5Xml REQUIRED)
 file(GLOB_RECURSE qxmpp_cpp src/QXmpp*.cpp)
 file(GLOB_RECURSE qxmpp_h src/QXmpp*.h)
 
+add_definitions(-DQXMPP_BUILD)
 include_directories(src/base src/client)
 add_library(qxmpp SHARED ${qxmpp_cpp} ${qxmpp_h})
 
